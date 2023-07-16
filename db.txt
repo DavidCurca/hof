@@ -1,0 +1,14 @@
+create table person {
+    id int not null auto_increment primary key,
+    name varchar(255),
+    external text,
+    graduation_year int
+}
+
+create table result {
+    contest_id int,
+    person_id int,
+    place int,
+    medal enum('none', 'bronze', 'silver', 'gold'),
+    
+}
