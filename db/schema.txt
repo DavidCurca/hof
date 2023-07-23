@@ -1,14 +1,42 @@
-create table person {
+create table person (
     id int not null auto_increment primary key,
     name varchar(255),
     external text,
     graduation_year int
-}
+)
 
-create table result {
+create table category (
+    id int not null auto_increment primary key,
+    name varchar(255),
+    priority int
+)
+
+create table contest (
+    id int not null auto_increment primary key,
+    name varchar(255),
+    category_id int,
+    foreign key (category_id) references category(id)
+)
+
+create table result (
     contest_id int,
     person_id int,
     place int,
     medal enum('none', 'bronze', 'silver', 'gold'),
-    
-}
+    foreign key (person_id) references person(id),
+    foreign key (contest_id) references contest(id)
+)
+
+create table session (
+    id int not null auto_increment primary key,
+    ip_adr varchar(255),
+    expiration varchar(255)
+)
+
+create table admin (
+    id int not null auto_increment primary key,
+    username varchar(255),
+    password varchar(255),
+    session_id int,
+    foreign key (session_id) references session(id)
+)
