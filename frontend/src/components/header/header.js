@@ -1,9 +1,13 @@
 import React from 'react';
-
+import Logo from './romania.png';
+import './header.scss';
 export default function Header(props) {
     return (
         <>
-            <h1>Ce faceti ba</h1>
+            <div className="header--container">
+                <img className="header--logo" src={Logo}></img>
+                <h1 className="header--title">Romanian Informatics Hall of Fame</h1>
+            </div>
         </>
     )
 }
