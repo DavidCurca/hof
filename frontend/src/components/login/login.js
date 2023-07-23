@@ -14,17 +14,12 @@ export default function Login(props) {
                     <div className="txt_field">
                         <input  type="text" id="fname" name="fname" required/>
                         <span></span>
-                        <label for="fname">First name:</label>
-                    </div>
-                    <div className="txt_field1">
-                        <input  type="text" id="lname" name="lname" required/>
-                        <span></span>
-                        <label for="lname">Last name:</label>
+                        <label for="fname">username:</label>
                     </div>
                     <div className="txt_field2">
                         <input type="password" id="lname" name="lname" required/> 
                         <span></span>
-                        <label for="lname">Password:</label>
+                        <label for="lname">password:</label>
                     </div>
                     <button type="submit"  onClick={check_sign_in}>submit</button>
                 </form>
