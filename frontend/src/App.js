@@ -18,7 +18,7 @@ function App() {
         {(data == 200) && <span style={{'fontWeight': '900'}}>funcitonal</span>}
         {(data != 200) && <span style={{'fontWeight': '900'}}>unreachable</span>}
       </div>
-      <Login/>
+      {(data == 200) && <Login/>}
     </div>
   );
 }

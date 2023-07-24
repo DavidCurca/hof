@@ -2,14 +2,14 @@ const express = require("express");
 const sha256 = require("js-sha256");
 const router = express.Router();
 const connection = require('../db');
-const {expired_session, create_session, delete_session} = require('./session')
+const {get_username, expired_session, create_session, delete_session, session_exists} = require('./session')
 const { configDotenv } = require("dotenv");
 
 router.get("/login", (req, res) => {
     username = req.query.username;
     password = req.query.password;
     if(username == undefined || req.query.password == undefined){
-        res.json({succes: false})
+        res.json({succes: false, message: 'invalid params'})
     }else{
         let user_exists = false;
         connection.query("SELECT password, id, session_id FROM admin WHERE username = ?", [username], async function (err, results) {
@@ -35,6 +35,24 @@ router.get("/login", (req, res) => {
                 res.json({succes: false, message: 'wrong password'})
             }
         });
+    }
+})
+
+router.get("/get_username", async (req, res) => {
+    session_id = req.query.id;
+    if(session_id == undefined){
+        res.json({succes : false, message: 'invalid params'})
+    }else{
+        if(await session_exists(session_id)){
+            if(await expired_session(session_id)){
+                res.json({succes : false, message: 'session expired'})
+            }else{
+                let name = await get_username(session_id)
+                res.json({succes: true, username: name})
+            }
+        }else{
+            res.json({succes: false, message: 'id does not exist'})
+        }
     }
 })
 
