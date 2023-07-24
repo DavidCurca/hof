@@ -29,7 +29,6 @@ create table result (
 
 create table session (
     id int not null auto_increment primary key,
-    ip_adr varchar(255),
     expiration varchar(255)
 )
 
