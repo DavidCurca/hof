@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './romania.png';
+import Logo from './romania.svg';
 import './header.scss';
 export default function Header(props) {
     return (
