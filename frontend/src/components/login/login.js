@@ -9,7 +9,7 @@ export default function Login(props) {
     const [password, setPassword] = useState("");
     const [logged, setLogged] = useState(false);
     const [loaded, setLoaded] = useState(false);
-
+    const [error, setError] = useState("");
     function send_request(e){
         e.preventDefault()
         let hash = sha256(password)
@@ -21,6 +21,8 @@ export default function Login(props) {
             if(data.succes){
                 setCookie("session", data.session, { path: "/" });
                 window.location.reload(false);
+            }else{
+                setError(data.message);
             }
         });
     }
@@ -77,6 +79,7 @@ export default function Login(props) {
                         <div className='center'>
                             <form>
                                 <h1>Admin Login</h1>
+                                <p className='login--error'>{error}</p>
                                 <div className="txt_field">
                                     <input type="text" id="fname" name="fname" required onChange={(e) => 
                                         setUsername(e.target.value)}/>

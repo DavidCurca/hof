@@ -54,13 +54,13 @@
     left: 0;
     width: 0%;
     height: 2px;
-    background: #da2b1e;
+    background: #2691d9;
     transition: .5s;
   }
   .txt_field input:focus ~ label,
   .txt_field input:valid ~ label{
     top: -5px;
-    color: #da2b1e;
+    color: #2691d9;
   }
   .txt_field input:focus ~ span::before,
   .txt_field input:valid ~ span::before{
@@ -180,4 +180,11 @@
   font-size: 23px;
   font-weight: 900;
   margin-top: 50px;
+}
+.login--error{
+  transform: translate(10%, 0%);
+  font-family: 'Poppins', sans-serif;
+ align-self: center;
+  margin-bottom: 10px;
+  color: red;
 }
