@@ -14,7 +14,6 @@ export default function Login(props) {
         e.preventDefault()
         let hash = sha256(password)
         /// fetch /api/admin/login
-
         fetch("/api/admin/login?username=" + username + "&password=" + hash)
         .then((res) => res.json())
         .then((data) => {
@@ -44,7 +43,7 @@ export default function Login(props) {
                     }
                     setLoaded(true);
                 }
-              })
+            })
         }
     }
 
