@@ -12,8 +12,9 @@ function HofError(props) {
         <>
             <div className="Hof--error">        
                 <img src="error-icon.png"></img>
-                <br></br>
-                <p>{props.errorMessage}</p>
+                <div className="Hof--errorr">
+                    <p>{props.errorMessage}</p>
+                </div>
             </div>
         </>
     )

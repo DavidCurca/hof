@@ -190,12 +190,12 @@
 }
 
 .Hof--error{
+
   background: linear-gradient(180deg, rgba(211, 147, 147), rgb(214, 162, 162), rgba(211, 147, 147));
   width: 300px;
   display: flex;
   align-items: center;
-  text-align: center;
-  transform: translate(275%,100%);
+  transform: translate(271%,100%);
   border-radius: 10px;
 }
 
@@ -207,16 +207,18 @@
   width: 40px;
 }
 
-.Hof--error p{
-  font-display: center;
-}
-
 .container{
   margin: 0;
   padding: 0;
   background: linear-gradient(180deg,#ffffff, #ececec, white);
   height: 80vh;
   overflow: hidden;
+}
+
+
+.Hof--errorr p{
+  width: 19vh;
+  text-align: center;
 }
 
 @keyframes spinner {
@@ -234,4 +236,8 @@
   border-top: 10px solid #383636; /* Black */
   border-radius: 50%;
   animation: spinner 1.5s linear infinite;
+}
+
+.Hof--error1 p{
+  text-align: center;
 }
