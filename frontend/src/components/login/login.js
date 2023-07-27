@@ -2,6 +2,23 @@ import React, { useEffect, useState } from 'react';
 import './login.scss';
 import { sha256 } from 'js-sha256';
 import { useCookies } from 'react-cookie';
+import { Spinner } from 'flowbite-react';
+
+
+
+function HofError(props) {
+    console.log(props.errorMessage);
+    return (
+        <>
+            <div className="Hof--error">        
+                <img src="error-icon.png"></img>
+                <br></br>
+                <p>{props.errorMessage}</p>
+            </div>
+        </>
+    )
+}
+
 
 export default function Login(props) {
     const [cookies, setCookie, removeCookie] = useCookies(['session']);
@@ -10,6 +27,7 @@ export default function Login(props) {
     const [logged, setLogged] = useState(false);
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState("");
+    const [gotError, setGotError] = useState(false);
     function send_request(e){
         e.preventDefault()
         let hash = sha256(password)
@@ -22,6 +40,7 @@ export default function Login(props) {
                 setCookie("session", data.session, { path: "/" });
                 window.location.reload(false);
             }else{
+                setGotError(true);
                 setError(data.message);
             }
         });
@@ -40,8 +59,8 @@ export default function Login(props) {
                     if(data.succes == false){
                         setLogged(false);
                     }else{
-                        setLogged(true);
                         setUsername(data.username);
+                        setLogged(true);
                     }
                     setLoaded(true);
                 }
@@ -61,39 +80,43 @@ export default function Login(props) {
     return (
         <>
             {(loaded == false) && 
-                <div className='center'>
-                    <p className='loading_text'>Loading ...</p>
+                <div className='container'>
+                    <div className='center'>
+                    </div>
                 </div>
             }
             {(loaded == true) &&
                 <div>
                     {(logged == true) &&
-                        <div>
+                        <div className='container'>
                             <div className='center'>
                                 <p className='loading_text'>Bine ai venit, {username} !</p>
                                 <button type='submit' style={{width: '50%', marginTop: '10px'}} onClick={logout}>log out</button>
                             </div>
                         </div>
                     }
+                    {(gotError) === true && <HofError errorMessage={error}/>}
                     {(logged) == false &&
-                        <div className='center'>
-                            <form>
-                                <h1>Admin Login</h1>
-                                <p className='login--error'>{error}</p>
-                                <div className="txt_field">
-                                    <input type="text" id="fname" name="fname" required onChange={(e) => 
-                                        setUsername(e.target.value)}/>
-                                    <span></span>
-                                    <label for="fname">username:</label>
-                                </div>
-                                <div className="txt_field2">
-                                    <input type="password" id="lname" name="lname" required onChange={(e) => 
-                                        setPassword(e.target.value)}/> 
-                                    <span></span>
-                                    <label for="lname">password:</label>
-                                </div>
-                                <button type='submit' onClick={send_request}>submit</button>
-                            </form>
+
+                        <div className='container'>
+                            <div className='center'>
+                                <form>
+                                    <h1>Admin Login</h1>
+                                    <div className="txt_field">
+                                        <input type="text" id="fname" name="fname" required onChange={(e) => 
+                                            setUsername(e.target.value)}/>
+                                        <span></span>
+                                        <label for="fname">username:</label>
+                                    </div>
+                                    <div className="txt_field2">
+                                        <input type="password" id="lname" name="lname" required onChange={(e) => 
+                                            setPassword(e.target.value)}/> 
+                                        <span></span>
+                                        <label for="lname">password:</label>
+                                    </div>
+                                    <button type='submit' onClick={send_request}>submit</button>
+                                </form>
+                            </div>
                         </div>
                     }
                 </div>
