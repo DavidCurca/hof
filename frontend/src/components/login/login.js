@@ -6,7 +6,8 @@ import { useCookies } from 'react-cookie';
 
 
 function HofError(props) {
-    console.log(props.errorMessage);
+    //console.log(props.errorMessage);
+   
     return (
         <>
             <div className="Hof--error">        
@@ -22,12 +23,25 @@ function HofError(props) {
 
 export default function Login(props) {
     const [cookies, setCookie, removeCookie] = useCookies(['session']);
+    const [cookie, setCooki, removeCooki] = useCookies(['Username']);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [logged, setLogged] = useState(false);
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState("");
     const [gotError, setGotError] = useState(false);
+    const [data, setData] = React.useState(null);
+    
+    React.useEffect(() => {
+        fetch("/api/ping")
+        .then((res) => {
+           setData(res.status)
+        })
+    }, []);
+    console.log("data is" + data);
+
+    
+
     function send_request(e){
         e.preventDefault()
         let hash = sha256(password)
@@ -38,6 +52,7 @@ export default function Login(props) {
             console.log(data);
             if(data.succes){
                 setCookie("session", data.session, { path: "/" });
+                setCooki("Username", data.username, { path: "/"});
                 window.location.reload(false);
             }else{
                 setGotError(true);
@@ -47,25 +62,26 @@ export default function Login(props) {
     }
 
     function check_login(){
-        let id = cookies['session'];
-        if(id == undefined){
-            setLogged(false)
-            setLoaded(true);
-        }else{
-            fetch("/api/admin/get_username?id=" + id)
-              .then((res) => res.json())
-              .then((data) => {
-                if(data.succes != undefined){
-                    if(data.succes == false){
-                        setLogged(false);
-                    }else{
-                        setUsername(data.username);
-                        setLogged(true);
+            let id = cookies['session'];
+            if(id == undefined){
+                setLogged(false)
+                setLoaded(true);
+            }else{
+                fetch("/api/admin/get_username?id=" + id)
+                .then((res) => res.json())
+                .then((data) => {
+                    if(data.succes != undefined){
+                        if(data.succes == false){
+                            setLogged(false);
+                        }else{
+                            setUsername(data.username);
+                            setLogged(true);
+
+                        }
+                        setLoaded(true);
                     }
-                    setLoaded(true);
-                }
-            })
-        }
+                })
+            }
     }
 
     function logout(){
@@ -79,14 +95,17 @@ export default function Login(props) {
 
     return (
         <>
+            {data != 200 && <HofError errorMessage={"cannot connect to the dataBase"}></HofError>}
             {(loaded == false) && 
                 <div className='container'>
                     <div className='center'>
+                        <h1>Loading...</h1>
                     </div>
                 </div>
             }
             {(loaded == true) &&
                 <div>
+                    
                     {(logged == true) &&
                         <div className='container'>
                             <div className='center'>

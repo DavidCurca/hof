@@ -91,6 +91,17 @@
 .Rankings{
     display: flex;
     width: 100vh;
-    transform: translate(130%, 80%);
+    transform: translate(140%, -100%);
     
+}
+.Text{
+    margin-left: 30vh;
+    margin-top: 30vh;
+    width: 800px;
+    font-size: 25px;
+    transition: 0.5s;
+}
+
+.Text:hover{
+    color: gray;
 }
