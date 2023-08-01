@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import './header.scss';
 //import logged1 from './header.js';
 import { Cookies, useCookies } from 'react-cookie';
-
 import { Link, useNavigate } from 'react-router-dom';
+
 export default function Header(props) {
-        const [cookies, setCookie, removeCookie] = useCookies(['Username']);
+    const [cookies, setCookie, removeCookie] = useCookies(['Username']);
     const navigate = useNavigate();
     const [accountStatus, SetAccountStatus] = useState("LOGIN");
     function redirectToAbout(){

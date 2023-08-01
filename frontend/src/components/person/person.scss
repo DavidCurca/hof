@@ -1,0 +1,50 @@
+.personWrapper{
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+}
+
+.name{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.gradYear{
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.yearCol{
+    max-width: 30px;
+}
+
+.fstCol{
+    width: auto;
+}
+
+.category{
+    border: none !important;
+    font-size: 17px;
+    float: left;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.results {
+    margin-top: 10px;
+    width: 100%;
+    padding: 3px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    // table-layout: fixed;
+}
+
+.results{
+    th {
+        border: 1px solid black;
+    }
+    tr {
+        border: 1px solid black;
+    }
+}
