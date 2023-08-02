@@ -189,38 +189,12 @@
   color: red;
 }
 
-.Hof--error{
-
-  background: linear-gradient(180deg, rgba(211, 147, 147), rgb(214, 162, 162), rgba(211, 147, 147));
-  width: 300px;
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 60px;
-  border-radius: 10px;
-}
-
-.Hof--error img{
-  margin-left: 30px;
-  margin-right: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 40px;
-}
-
 .container{
   margin: 0;
   padding: 0;
   background: linear-gradient(180deg,#ffffff, #ececec, white);
   height: 80vh;
   overflow: hidden;
-}
-
-
-.Hof--errorr p{
-  width: 19vh;
-  text-align: center;
 }
 
 @keyframes spinner {
@@ -238,8 +212,4 @@
   border-top: 10px solid #383636; /* Black */
   border-radius: 50%;
   animation: spinner 1.5s linear infinite;
-}
-
-.Hof--error1 p{
-  text-align: center;
 }

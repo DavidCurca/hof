@@ -2,24 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './login.scss';
 import { sha256 } from 'js-sha256';
 import { useCookies } from 'react-cookie';
-
-
-
-function HofError(props) {
-    //console.log(props.errorMessage);
-   
-    return (
-        <>
-            <div className="Hof--error">        
-                <img src="error-icon.png"></img>
-                <div className="Hof--errorr">
-                    <p>{props.errorMessage}</p>
-                </div>
-            </div>
-        </>
-    )
-}
-
+import HofError from '../hofError/hofError';
 
 export default function Login(props) {
     const [cookies, setCookie, removeCookie] = useCookies(['session']);
@@ -38,8 +21,6 @@ export default function Login(props) {
         })
     }, []);
     console.log("data is" + data);
-
-    
 
     function send_request(e){
         e.preventDefault()
@@ -60,26 +41,25 @@ export default function Login(props) {
     }
 
     function check_login(){
-            let id = cookies['session'];
-            if(id == undefined){
-                setLogged(false)
-                setLoaded(true);
-            }else{
-                fetch("/api/admin/get_username?id=" + id)
-                .then((res) => res.json())
-                .then((data) => {
-                    if(data.succes != undefined){
-                        if(data.succes == false){
-                            setLogged(false);
-                        }else{
-                            setUsername(data.username);
-                            setLogged(true);
-
-                        }
-                        setLoaded(true);
+        let id = cookies['session'];
+        if(id == undefined){
+            setLogged(false)
+            setLoaded(true);
+        }else{
+            fetch("/api/admin/get_username?id=" + id)
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.succes != undefined){
+                    if(data.succes == false){
+                        setLogged(false);
+                    }else{
+                        setUsername(data.username);
+                        setLogged(true);
                     }
-                })
-            }
+                    setLoaded(true);
+                }
+            })
+        }
     }
 
     function logout(){

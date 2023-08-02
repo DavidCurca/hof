@@ -1,9 +1,43 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
+import { useCookies } from 'react-cookie';
 import './newResult.scss'
 
 export default function NewResult(){
+    const [name, setName] = useState("");
+    const [cookies, setCookie, removeCookie] = useCookies(['session']);
+    const [logged, setLogged] = useState(false);
+    const [loaded, setLoaded] = useState(false);
+    const [username, setUsername] = useState("");
+
+    function check_login(){
+        let id = cookies['session'];
+        if(id == undefined){
+            setLogged(false)
+            setLoaded(true);
+        }else{
+            fetch("/api/admin/get_username?id=" + id)
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.succes != undefined){
+                    if(data.succes == false){
+                        setLogged(false);
+                    }else{
+                        setUsername(data.username);
+                        setLogged(true);
+                    }
+                    setLoaded(true);
+                }
+            })
+        }
+    }
+
+    useEffect(() => {
+        check_login()
+    }, []);
+
     return (
         <div className="wrapper">
+            
             <form>
                 <label for="name">Nume: </label>
                 <input type="text" id="name" name="name"/><br/>

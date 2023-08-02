@@ -20,18 +20,6 @@ import Login from './components/login/login';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Header/>
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/about" element={<About/>}></Route>
-        <Route path='/stats' element={<Stats/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='*' element={<NotFound/>}></Route>
-        <Route path='/person' element={<Person/>}></Route>
-        <Route path='/new_result' element={<NewResult/>}></Route>
-      </Routes>
-    </BrowserRouter>
- 
+    <App></App>
   </React.StrictMode>
 );
