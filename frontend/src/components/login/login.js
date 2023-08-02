@@ -23,7 +23,6 @@ function HofError(props) {
 
 export default function Login(props) {
     const [cookies, setCookie, removeCookie] = useCookies(['session']);
-    const [cookie, setCooki, removeCooki] = useCookies(['Username']);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [logged, setLogged] = useState(false);
@@ -52,7 +51,6 @@ export default function Login(props) {
             console.log(data);
             if(data.succes){
                 setCookie("session", data.session, { path: "/" });
-                setCooki("Username", data.username, { path: "/"});
                 window.location.reload(false);
             }else{
                 setGotError(true);
@@ -95,7 +93,7 @@ export default function Login(props) {
 
     return (
         <>
-            {data != 200 && <HofError errorMessage={"cannot connect to the dataBase"}></HofError>}
+            {data != 200 && <HofError errorMessage={"cannot connect to the database"}></HofError>}
             {(loaded == false) && 
                 <div className='container'>
                     <div className='center'>

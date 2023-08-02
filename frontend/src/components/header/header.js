@@ -6,17 +6,16 @@ import { Cookies, useCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header(props) {
-    const [cookies, setCookie, removeCookie] = useCookies(['Username']);
+    const [cookies, setCookie, removeCookie] = useCookies(['session']);
     const navigate = useNavigate();
-    const [accountStatus, SetAccountStatus] = useState("LOGIN");
     function redirectToAbout(){
-        navigate("/About");
+        navigate("/about");
     }
     function redirectToLogin(){
-        navigate("/SignIn");
+        navigate("/login");
     }
     function redirectToStats(){
-        navigate("/Stats");
+        navigate("/stats");
     }
     
     return (

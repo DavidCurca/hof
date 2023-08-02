@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.scss';
 import App from './App';
-import Home from './components/Home/Home';
-import About from './components/About/About';
+import Home from './components/home/home';
+import About from './components/about/about';
 import Header from './components/header/header';
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
-import Stats from './components/Stats/Stats';
+import Stats from './components/stats/stats';
 import Person from './components/person/person';
 import NotFound from './components/notFound/notFound';
 import {
