@@ -10,6 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Stats from './components/stats/stats';
 import Person from './components/person/person';
 import NotFound from './components/notFound/notFound';
+import NewResult from './components/newResult/newResult';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -28,6 +29,7 @@ root.render(
         <Route path='/login' element={<Login/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
         <Route path='/person' element={<Person/>}></Route>
+        <Route path='/new_result' element={<NewResult/>}></Route>
       </Routes>
     </BrowserRouter>
  
