@@ -1,0 +1,58 @@
+.contestCard{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 40px;
+    background-color:#787878 ;
+    width: 28vh;
+    height: 17vh;
+    border-radius:12px;
+    box-shadow: 4px 4px 4px rgb(161, 161, 161);
+    transition: 0.2s;
+}
+
+.contestCard:hover{
+    width: 29vh;
+    height: 18vh;
+}
+
+.contestCard h2{
+    margin-top: 26px;
+    color: whitesmoke;
+    margin-left: 40px;
+    margin-bottom: 3px;
+}
+.contestCard p{
+    font-size: 16px;
+    color: whitesmoke;
+    margin-left: 40px;
+    margin-bottom: 3px;
+}
+
+.Stats--page{
+    background: linear-gradient(180deg,#ffffff, #ececec, white);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.roundButton{
+    margin-top: 80px;
+    margin-left: 40px;
+    background-color:#787878;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    transition: 0.2s;
+
+}
+.roundButton h1{
+    //box-shadow: 4px 4px 4px rgb(161, 161, 161);
+    color: whitesmoke;
+    margin-top: 6px;
+    text-align: center;
+}
+.roundButton:hover{
+    text-align: center;
+    width: 63px;
+    height: 63px;
+}
