@@ -16,7 +16,7 @@ export default function Contest(props) {
         {theme === 'modern' &&
             <div className='container1'>
                 <h1 className='ContestTitle'>{contestName}</h1>
-                <div className='Center'>
+                <div className='Center1'>
                     <div className='results'>
                         <div className='Podium'>
                         

@@ -1,14 +1,14 @@
-.wrapper{
-    margin: 50px;
-    font-size: 20px;
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-label{
-    margin-right: 10px;
-}
 
 button[type="submit"]{
-    margin-top: 15px;
+    margin-top: 35px;
     width: 200px;
     height: 50px;
     border: 1px solid;
@@ -20,13 +20,26 @@ button[type="submit"]{
     cursor: pointer;
     outline: none;
 }
-
-.bold{
-    font-weight: 900;
+.LabelForInput{
+    margin-top: 10px;
 }
+.Medal{
+    padding-left: 40px;
+ //.   padding-right: 50px;
+    border-radius: 20px;
+    border:0 ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #ededed;
+}
+.inputField{
+    border: 0;
+    padding-top:7px;
+    ///:5px;
+    padding-bottom:7px;
+    border-radius: 15px;
+    background-color: rgb(224, 223, 223);
 
-.underText{
-    font-size: 18px;
 }
 
 button[type="submit"]:hover{

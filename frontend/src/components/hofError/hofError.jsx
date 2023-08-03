@@ -2,7 +2,7 @@ import React from "react";
 import './hofErorr.scss';
 
 export default function HofError(props) {
-    //console.log(props.errorMessage);
+    console.log(props.errorMessage);
    
     return (
         <>

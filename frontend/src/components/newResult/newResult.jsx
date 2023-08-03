@@ -2,7 +2,7 @@ import {React, useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 import './newResult.scss'
-
+import HofError from "../hofError/hofError";
 export default function NewResult(){
     const [name, setName] = useState("");
     const [year, setYear] = useState(null);
@@ -16,7 +16,7 @@ export default function NewResult(){
     const [loaded, setLoaded] = useState(false);
     const [username, setUsername] = useState("");
     const navigate = useNavigate();
-
+    const [error, setError] = useState(false)
     function check_login(){
         let id = cookies['session'];
         if(id == undefined){
@@ -38,9 +38,21 @@ export default function NewResult(){
             })
         }
     }
+    function checkExistance(){
+        /// TODO: implement
+        return false;
+    }
 
     function addResult(e){
         e.preventDefault()
+        console.log("name: " + name);
+        console.log("id: " + contestId);
+        console.log("place: " + place);
+        console.log("year: " + year);
+        console.log("medal: " + medal);
+        if(checkExistance() === false){
+            setError(true);
+        }else{
         console.log("name: " + name);
         console.log("id: " + contestId);
         console.log("place: " + place);
@@ -53,65 +65,59 @@ export default function NewResult(){
         .then((data) => {
             console.log(data);
         })
+        }
     }
 
-    function checkExistance(){
-        /// TODO: implement
-    }
+    
 
+    function changeName(e){
+        setError(false);
+        setName(e.target.value);
+    }
+    function changeConcurs(e){
+        /// TODO: implement an id matcher for any comp
+
+    }
+    function changeYear(e){
+        setYear(e.target.value);
+    }
+    function changePlace(e){
+        setPlace(e.target.value);
+    }
+    function something(e){
+
+    }
+    
     useEffect(() => {
         check_login()
     }, []);
-
+  //  <HofError errorMessage={"Persoana " + name + " nu a fost gasita"}
     return (
-        <div className="wrapper">
-            {username != "" &&
+        <>
+        {error === true && <h1 style={{paddingLeft:"680px", paddingTop:"30px"}}>Something</h1>}
+        <div>
+             <div className="center">
                 <form>
-                    <p><span style={{fontFamily: 'Courier Prime', fontWeight: '900'}}>{username}</span>, va adauga rezultatul</p>
+                     <p className="LabelForInput">Nume</p>
+                        <input name='Nume' type='text' className="inputField" onChange={changeName}></input>
+                     <p className="LabelForInput">Concurs</p>
+                         <input name='Nume' type='text'className="inputField" ></input>
+                     <p className="LabelForInput">An</p>
+                         <input name='Nume' type='number' className="inputField" onChange={changeYear}></input>
+                     <p className="LabelForInput">Loc in clasament</p>
+                         <input name='Nume' type='number' className="inputField" onChange={changePlace}></input>
+                     <p className="LabelForInput">Medalie</p>
+                     <select className="Medal" name="medal">
+                        <option value={3}>Aur</option>
+                        <option value={2}>silver</option>
+                        <option value={1}>bronz</option>
+                        <option value={0}>niciuna</option>
+                    </select>
 
-                    <div style={{marginTop: '10px'}}>
-                        <label for="name">Nume: </label>
-                        <input type="text" id="name" name="name" onChange={(e) => {setName(e.target.value); checkExistance()}}/>
-                        <br/>
-
-                        {name != "" &&
-                        <>
-                            {exists === false && 
-                                <p className="underText">Persoana <span className="bold">{name}</span> nu a fost gasita, <button onClick={() => {navigate("/new_person")}}>Creaz-o</button> </p>
-                            }
-                        </>
-                        }
-                    </div>
-
-                    <div style={{marginTop: '10px'}}>
-                        <label for="contest" value="1">Concurs:</label>
-                        <select name="contest" id="contest" onChange={(e) => setContesId(e.target.value)}>
-                            <option value="1">ONI</option>
-                        </select> <br/>
-                    </div>
-                    <div style={{marginTop: '10px'}}>
-                        <label for="year">An: </label>
-                        <input type="number" id="year" name="year" onChange={(e) => setYear(e.target.value)}/><br></br>
-                    </div>
-                    <div style={{marginTop: '10px'}}>
-                        <label for="place">Loc in clasament: </label>
-                        <input type="number" id="place" name="place" onChange={(e) => setPlace(e.target.value)}/><br></br>
-                    </div>
-                    <div style={{marginTop: '10px'}}>
-                        <label for="medal">Medalie:</label>
-                        <select name="medal" id="medal" onChange={(e) => setMedal(e.target.value)}>
-                            <option value="0">Niciuna</option>
-                            <option value="3">Bronz</option>
-                            <option value="2">Argint</option>
-                            <option value="1">Aur</option>
-                        </select><br/>
-                    </div>
-                    <button type="submit" onClick={addResult}>Adauga</button>
+                    <button type="submit" onClick={addResult}>Submit</button>
                 </form>
-            }
-            {username === "" &&
-                <p>aceasta pagina este menita doar adminilor!</p>
-            }
+            </div>
         </div>
+         </>
     )
 }
