@@ -10,7 +10,7 @@ export default function Person(props) {
                     <p className="gradYear">Anul absolvirii: <span className="mono">2028</span></p>
                 </div>
                 <div>
-                    <table className="results">
+                    <table className="resultsTable">
                         <tr>
                             <th className="fstCol">
                                 <p>Concurs</p>

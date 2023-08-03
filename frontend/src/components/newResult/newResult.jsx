@@ -47,7 +47,8 @@ export default function NewResult(){
         console.log("year: " + year);
         console.log("medal: " + medal);
 
-        fetch("/api/result/addresult")
+        fetch("/api/result/addresult?session=" + cookies['session'] + '&person=' + personId +
+              "&contest=" + contestId + "&place="+ place + "&year=" + year + "&medal=" + medal)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
