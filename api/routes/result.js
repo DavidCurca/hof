@@ -5,7 +5,11 @@ const connection = require('../db');
 
 medalLookup = ["", "Bronz", "Argint", "Aur"]
 
-router.get("/addresult", (req, res) => {
+/*
+ coloane care pot fi adaugate in result: judet, sex
+*/
+
+router.get("/addresult", async (req, res) => {
     sessionId = req.query.session;
     personId = req.query.person;
     contestId = req.query.contest;
@@ -27,6 +31,35 @@ router.get("/addresult", (req, res) => {
 
     /// INSERT INTO results (contest, person, place, medal, year) VALUES (contestId, personId, ...)
 
+    await new Promise((res, rej) => {
+        connection.query("INSERT INTO result (contest_id, person_id, place, medal, year) VALUES (?)", [[contestId, personId, place, medal, year]], function (err, results) {
+            if (err){
+                res.json({status: false, message: err});
+                throw err;
+            }
+            console.log(results);
+        });
+    });
+    res.json({status: true, message: 'added result succesfully'});
+
+})
+
+router.get("/getresults", async (req, res) => {
+    id = req.query.id;
+    console.log(id)
+    if(id == undefined){
+        res.json({status: false, message: 'invalid params'})
+        return;
+    }
+    await new Promise((res, rej) => {
+        connection.query("SELECT * FROM result WHERE person_id = ?", [id], function (err, results) {
+            if (err){
+                res.json({status: false, message: err});
+                throw err;
+            }
+            console.log(results);
+        });
+    });
 })
 
 module.exports = router;

@@ -6,6 +6,10 @@ router.get("/getid", (req, res) => {
 
 })
 
+router.get("/getinfo", (req, res) => {
+    
+})
+
 router.get("/getresult", (req, res) => {
     /*
         {
