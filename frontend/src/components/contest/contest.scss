@@ -1,0 +1,75 @@
+
+.container1{
+    background: linear-gradient(180deg,#ffffff, #ececec, white);
+}
+.Center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+     //   height: fit-content;
+
+}
+.ContestTitle{
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.results{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Podium{
+    display: flex;
+}
+
+.firstPlace{
+    //margin-left: 40px;
+    //margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+}
+
+.gold{
+    width: 150px;
+    height: 300px;
+    background-color: gold;
+}
+
+.secondPlace{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+}
+.silver{
+    width: 150px;
+    height: 230px;
+    background-color: silver;
+}
+
+
+.thirdPLace{
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+}
+.bronz{
+    width: 150px;
+    height: 190px;
+    background-color: brown;
+}
+
+.Placement{
+    height: 50vh;
+    margin-top: 30px;
+}
+.Placement p{
+    margin-bottom: 10px;
+}
