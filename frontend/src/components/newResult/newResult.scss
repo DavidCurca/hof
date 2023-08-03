@@ -21,6 +21,14 @@ button[type="submit"]{
     outline: none;
 }
 
+.bold{
+    font-weight: 900;
+}
+
+.underText{
+    font-size: 18px;
+}
+
 button[type="submit"]:hover{
     border-color: #858b83;
     transition: .5s;
