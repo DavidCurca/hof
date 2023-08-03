@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (5,'divad','ca36caca1219dd50c4ca936d5cfedd707f719bb647a0c267a678976824776c47',60),(6,'altmos','a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312',59),(7,'lucalucam','a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312',NULL),(8,'tvladm','a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312',NULL);
+INSERT INTO `admin` VALUES (5,'divad','ca36caca1219dd50c4ca936d5cfedd707f719bb647a0c267a678976824776c47',61),(6,'altmos','a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312',59),(7,'lucalucam','a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312',NULL),(8,'tvladm','a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312',NULL);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,7 @@ CREATE TABLE `category` (
   `name` varchar(255) DEFAULT NULL,
   `priority` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Competiții Naționale',100);
+INSERT INTO `category` VALUES (1,'Competiții Naționale',100),(2,'Competiții Județene',200);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,6 +108,7 @@ CREATE TABLE `person` (
   `name` varchar(255) DEFAULT NULL,
   `external` text,
   `graduation_year` int DEFAULT NULL,
+  `hash` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -118,7 +119,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` VALUES (1,'Ionuț Popescu',NULL,2028);
+INSERT INTO `person` VALUES (1,'Ionuț Popescu',NULL,2028,'ionut,popescu');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +134,8 @@ CREATE TABLE `result` (
   `contest_id` int DEFAULT NULL,
   `person_id` int DEFAULT NULL,
   `place` int DEFAULT NULL,
-  `medal` enum('none','bronze','silver','gold') DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `medal` varchar(255) DEFAULT NULL,
   KEY `person_id` (`person_id`),
   KEY `contest_id` (`contest_id`),
   CONSTRAINT `result_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`),
@@ -147,6 +149,7 @@ CREATE TABLE `result` (
 
 LOCK TABLES `result` WRITE;
 /*!40000 ALTER TABLE `result` DISABLE KEYS */;
+INSERT INTO `result` VALUES (1,1,1,2023,'Aur'),(1,1,1,2023,'Aur'),(1,1,1,2023,'Aur');
 /*!40000 ALTER TABLE `result` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +164,7 @@ CREATE TABLE `session` (
   `id` int NOT NULL AUTO_INCREMENT,
   `expiration` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +173,7 @@ CREATE TABLE `session` (
 
 LOCK TABLES `session` WRITE;
 /*!40000 ALTER TABLE `session` DISABLE KEYS */;
-INSERT INTO `session` VALUES (59,'2023-08-02 00:24:00.066'),(60,'2023-08-03 17:03:26.404');
+INSERT INTO `session` VALUES (59,'2023-08-02 00:24:00.066'),(61,'2023-08-04 17:34:53.522');
 /*!40000 ALTER TABLE `session` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -183,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-03  0:39:24
+-- Dump completed on 2023-08-04  1:29:25
