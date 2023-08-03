@@ -10,7 +10,7 @@ export default function Person(props) {
                     <p className="gradYear">Anul absolvirii: <span className="mono">2028</span></p>
                 </div>
                 <div>
-                    <table className="results">
+                    <table className="resultsTable">
                         <tr>
                             <th className="fstCol">
                                 <p>Concurs</p>
@@ -42,6 +42,10 @@ export default function Person(props) {
                         </tr>
                         <tr>
                             <th className="category" colSpan={5}>Loturi, Baraje Nationale</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <tr>
                             <th>Cupa SEPI Juniori</th>

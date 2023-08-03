@@ -31,7 +31,7 @@
     padding: 5px;
 }
 
-.results {
+.resultsTable {
     margin-top: 10px;
     width: 100%;
     padding: 3px;
@@ -40,11 +40,14 @@
     // table-layout: fixed;
 }
 
-.results{
+.resultsTable{
     th {
-        border: 1px solid black;
+        border: 0px solid black;
+        height: 20px;
     }
     tr {
-        border: 1px solid black;
+        height: 40px;
+        border: 0px solid black;
     }
 }
+tr:nth-child(even) {background-color: #f2f2f2;}
