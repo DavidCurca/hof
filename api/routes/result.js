@@ -46,20 +46,24 @@ router.get("/addresult", async (req, res) => {
 
 router.get("/getresults", async (req, res) => {
     id = req.query.id;
-    console.log(id)
     if(id == undefined){
         res.json({status: false, message: 'invalid params'})
         return;
     }
+    let ans = [];
     await new Promise((res, rej) => {
         connection.query("SELECT * FROM result WHERE person_id = ?", [id], function (err, results) {
             if (err){
                 res.json({status: false, message: err});
                 throw err;
             }
-            console.log(results);
+            for(let i = 0; i < results.length; i++){
+                ans.push(results[i]);
+            }
+            res(0);
         });
     });
+    res.json({status: true, message: ans});
 })
 
 module.exports = router;

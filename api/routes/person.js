@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const {getCategoryId} = require('./contest');
 const connection = require('../db');
 
 router.get("/getid", (req, res) => {
@@ -7,30 +8,15 @@ router.get("/getid", (req, res) => {
 })
 
 router.get("/getinfo", (req, res) => {
-    
+
 })
 
 router.get("/getresult", (req, res) => {
+    /// getinfo + /api/result/getresults
     /*
-        {
-            name: ,
-            graduation_year: ,
-            external: ,
-            results: {
-                {
-                    category_name: ''.
-                    category_id: '',
-                    
-                    results : {
-                        {
-                            year: ,
-                            place: ,
-                            medal ,
-                        }
-                    }
-                }
-            }
-        }
+        - categorii
+            - concusuri
+                rezultate
     */
 })
 
