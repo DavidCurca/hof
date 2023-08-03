@@ -94,9 +94,9 @@ export default function NewResult(){
   //  <HofError errorMessage={"Persoana " + name + " nu a fost gasita"}
     return (
         <>
-        {error === true && <h1 style={{paddingLeft:"680px", paddingTop:"30px"}}>Something</h1>}
+        {error === true && <HofError errorMessage={"Persoana " + name + " nu a fost gasita "}></HofError>}
         <div>
-             <div className="center">
+             <div className="center" style={{marginTop:"100px"}}>
                 <form>
                      <p className="LabelForInput">Nume</p>
                         <input name='Nume' type='text' className="inputField" onChange={changeName}></input>
